@@ -1,11 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Week 01</title>
+    <link href="https://fonts.googleapis.com/css2?family=Spartan&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
+    <h1>Week 01</h1>
+    <div class="notes">
+        <h2 id="noteHeader">Notes</h2>
+        <h3>Syllabus</h3>
+        <h4>Readings</h4>
+        <div>
+            <ul>
+                <li>Doing Stuff with Web Things <span class="required">Required</span></li>
+                <li>HTML5 & CSS3 for the Real World: 2nd Edition (HCRW) [SitePoint] <span
+                        class="required">Required</span></li>
+                <li>Eloquent JavaScript (EJS) <span class="required">Required</span></li>
+                <li>Learning CSS3 Animations and Transitions</li>
+                <li>Learning Web App Development: Build Quickly with Proven JavaScript Techniques</li>
+            </ul>
+        </div>
+        <h4>Software and Tools</h4>
+        <div>
+            <ul>
+                <li>Google Chrome Web Browser</li>
+                <li>Github Account</li>
+                <li>Git installed on the computer</li>
+            </ul>
+        </div>
+        <h3>Doing Stuff with Web Things</h3>
+        <h4>Local Storage</h4>
+        <div>
+            <ul>
+                <li>For there to be true communication
+                    it must be bidirectional. The user needs
+                    some way to speak to you.</li>
+                <li>In techie speak the information stored or shared with the user is
+                    called output. Anything coming in from where it was stored or anything
+                    the user enters is called input.</li>
+            </ul>
+            <p>Code Example from the reading:</p>
+            <div class="code-snipet">
+                <pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Story Editor&lt;/title&gt;
+        &lt;script&gt;
+            function loadStory(){
+                var storyName = document.getElementById("name_input").value
+                var storyHTML = localStorage.getItem(storyName)
+                document.getElementById("story_editor").value = storyHTML
+            }
+            function saveStory(){
+                var storyName = document.getElementById("name_input").value
+                var storyHTML = document.getElementById("story_editor").value
+                localStorage.setItem(storyName,storyHTML)
+            }
+            function displayStory(){
+                var storyHTML = document.getElementById("story_editor").value
+                document.getElementById("story_display").innerHTML = storyHTML
+            }
+        &lt;/script&gt;
+                    
+        &lt;style&gt;
+            textarea{
+                width:800px;
+                height: 250px;
+                background-color: lightyellow;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+                    
+    &lt;body&gt;
+        &lt;h1&gt;Story Editor&lt;/h1&gt;
+        Story Name: &lt;input id=name_input&gt;&lt;/input&gt;
+        &lt;section&gt;
+            &lt;button onclick="loadStory()"&gt;Find and Edit It&lt;/button&gt;
+            &lt;button onclick="saveStory()"&gt;Save It&lt;/button&gt;
+            &lt;button onclick="displayStory()"&gt;Display It&lt;/button&gt;
+        &lt;/section&gt;
+        &lt;textarea id="story_editor" placeholder="Write a totally awesome story here."&gt;&lt;/textarea&gt;
+        &lt;section id="story_display"&gt;&lt;/section&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+        </div>
+        <h3>Master Mobile UX</h3>
+        <h4>How to Rewire Your Brain for Mobile First UX</h4>
+        <div>
+            <blockquote>"If you design for the smallest, least powerfull device first, then you will focus on your
+                conntent, and your core functionality. That leads to simple, beautiful apps. If you do it the other way
+                around, it'll be like trying to put a marshmallow into a piggy bank, which is either simple, nor
+                beautiful." Joel Marsh - The Hipper Element</blockquote>
+
+            <ul>
+                <li>We have been making websites and applications for larger screens.</li>
+                <li>More and more consumers have a mobile device. Everything we build, the application needs to be
+                    viewed accross all devices.</li>
+                <li>Consumers will have 3-5 devices. Multiple devices per houshold</li>
+            </ul>
+            <blockquote>"The simple guideline is whatever you are doing - do mobile first" - Eric Schmidt, World Mobile
+                Congress Keynote 2012</blockquote>
+            <ul>
+                <li>Responsive != Mobile First</li>
+                <li>Responsive Retrofitting</li>
+                <ul>
+                    <li>Cheaper and faster than a group rewrite</li>
+                    <li>Better mobile experience than a desktop only site</li>
+                    <li>Doesn't address screen real estate issues</li>
+                    <li>Doesn't address touch interaction issues</li>
+                </ul>
+                <li>Mobile is the new desktop</li>
+                <li>Mobile First</li>
+                <ul>
+                    <li>Time consuming and costly for a full rebuild</li>
+                    <li>Proviedes best experience accross many devices</li>
+                    <li>Address constraints of mobile size/bandwidth</li>
+                    <li>Future friendly and ready for growth</li>
+                </ul>
+                <li>Things to Remember</li>
+                <ul>
+                    <li>Desktop computer sales are way down, mobile devices are in much more demand.</li>
+                    <li>Start small and scale up.</li>
+                    <li>Mobile is not a fad, it is not going away.</li>
+                </ul>
+            </ul>
+        </div>
+        <h4>How to Improve UX by Understanding Users</h4>
+        <div>
+            <blockquote>"It's really hard to design products by focus groups. A lot of times, people don't know what they want until you show it to them."  Steve Jobs - Apple</blockquote>
+            <ul>
+                <li>Be There!</li>
+                <li>Be Useful! Only 9% of users will stay if it doesn't satisfy their needs</li>
+                <li>Be Quick! It's not about fast loading, the functionality must be there as well.</li>
+            </ul>
+        </div>
+        <h4>Better Mobile UX with Strategic Menu Design</h4>
+        <h4>Designing Intuitive and Mobile Friendly Form</h4>
+        <h4>Designing a Better Mobile Advertising User Experience</h4>
+    </div>
+
+    <script src="prism.js"></script>
+
 </body>
+
 </html>
