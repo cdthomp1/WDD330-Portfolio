@@ -1,18 +1,21 @@
-var oldEntries = getEntries();
+class TodoItem {
+    constructor(task) {
+        this.id = Date.now();
+        this.content = task;
+        this.completed = false;
+    }
+}
 
 function addTodo() {
     // Get the entry
     var todoEntry = document.getElementById("todoEntry").value;
-
+    
     if (todoEntry !== '') {
         saveEntry(todoEntry);
     } else {
         showError();
     }
-
     document.getElementById("todoEntry").value = '';
-
-    // Add to local storage
 }
 
 function displayEntry(todo, status) {
@@ -22,29 +25,31 @@ function displayEntry(todo, status) {
     todoItemDiv.setAttribute('class', 'todoItem');
     todoItemDiv.setAttribute('id', todo.id)
 
-    var squareDiv = document.createElement("span");
-    squareDiv.setAttribute('class', 'material-icons');
-    squareDiv.innerText = "done";
-    todoItemDiv.appendChild(squareDiv);
-    squareDiv.myParam = todo.id;
-
+    var spanIconComplete = document.createElement("span");
+    spanIconComplete.setAttribute('class', 'material-icons');
+    spanIconComplete.innerText = "check_box_outline_blank";
+    spanIconComplete.setAttribute("id", "iconFor"+todo.id)
+    spanIconComplete.myParam = todo.id;
+    
     var taskDiv = document.createElement('div');
     taskDiv.setAttribute('class', 'task');
     taskDiv.innerText = todo.content;
-    todoItemDiv.appendChild(taskDiv);
-
-    if (todo.completed){
-        squareDiv.classList.add("completed");
-        taskDiv.classList.add('completed');
-    } else {
-        squareDiv.addEventListener('click', completeTask, false);
-    }
 
     var endBtn = document.createElement('span');
     endBtn.setAttribute('class', 'material-icons');
     endBtn.innerText = "delete_forever";
     endBtn.addEventListener('click', deleteTask, false);
     endBtn.myParam = todo.id;
+    
+    if (todo.completed){
+        todoItemDiv.classList.add("completed");
+        spanIconComplete.innerText = "check_box";
+    } else {
+        spanIconComplete.addEventListener('click', completeTask, false);
+    }
+    
+    todoItemDiv.appendChild(spanIconComplete);
+    todoItemDiv.appendChild(taskDiv);
     todoItemDiv.appendChild(endBtn);
 
     document.getElementsByClassName('todoList')[0].appendChild(todoItemDiv);
@@ -54,7 +59,8 @@ function displayEntry(todo, status) {
 async function completeTask(evt) {
 
     document.getElementById(evt.currentTarget.myParam).classList.add("completed");
-    var entries = await oldEntries;
+    document.getElementById("iconFor"+evt.currentTarget.myParam).innerText = "check_box";
+    var entries = await getEntries();
     
     var stutus = entries.findIndex(entry => entry.id === evt.currentTarget.myParam);
     entries[stutus].completed = true
@@ -66,7 +72,7 @@ async function completeTask(evt) {
 async function deleteTask(evt) {
     document.getElementById(evt.currentTarget.myParam).remove();
 
-    var entries = await oldEntries;
+    var entries = await getEntries();
     
     var deleteable = entries.find(entry => entry.id === evt.currentTarget.myParam);
 
@@ -74,19 +80,13 @@ async function deleteTask(evt) {
     var updatedTasks = entries.filter(entry => entry !== deleteable);
 
     localStorage.setItem('testC', JSON.stringify(updatedTasks));
-
-    oldEntries = await getEntries();
 }
 
 async function saveEntry(entry) {
 
-    var entries = await oldEntries;
+    var entries = await getEntries();
 
-    var todoEntry = {
-        id: Date.now(),
-        content: entry,
-        completed: false
-    }
+    var todoEntry = new TodoItem(entry);
 
     displayEntry(todoEntry, "all");
     entries.push(todoEntry);
@@ -106,20 +106,58 @@ async function getEntries() {
 }
 
 async function startUp() {
+    document.getElementsByClassName('todoList')[0].innerHTML = '';
+
     var todos = await getEntries();
+    
+    displayCount(todos.length);
 
     if (todos !== null) {
         todos.forEach(todo => {
-            console.log(todo);
             displayEntry(todo);
         });
+    } else {
+        // ADD A message to add a todo!
     }
 
+}
+
+function displayCount(count) {
+    // Reset the html to be empty, may not need this
+    document.getElementsByClassName('count')[0].innerHTML = '';
+    
 }
 
 function showError() {
     document.getElementById('err').innerText = "You need to enter some text!"
     setTimeout(function(){ document.getElementById('err').innerText = '' }, 3000);
 }
+
+
+// Footer filters 
+async function activeTodos() {
+    document.getElementsByClassName('todoList')[0].innerHTML = '';
+    var todos = await getEntries();
+
+    if (todos !== null) {
+        todos.filter(todo => todo.completed === false)
+        .forEach(todo => {
+            displayEntry(todo);
+        });
+    }
+}
+
+async function completedTodos() {
+    document.getElementsByClassName('todoList')[0].innerHTML = '';
+    var todos = await getEntries();
+
+    if (todos !== null) {
+        todos.filter(todo => todo.completed === true)
+        .forEach(todo => {
+            displayEntry(todo);
+        });
+    }
+}
+
 
 startUp();

@@ -19,9 +19,10 @@
             </div> -->
         </div>
         <div class="actionBtns">
-            <button>All</button>
-            <button>Active</button>
-            <button>Completed</button>
+            <div class="count"></div>
+            <button onclick="startUp()">All</button>
+            <button onclick="activeTodos()">Active</button>
+            <button onclick="completedTodos()">Completed</button>
         </div>
         <div class="entry">
             <input type="text" name="Todo Entry" id="todoEntry" placeholder="Add a Task Here!"><button onclick="addTodo()">+</button>
