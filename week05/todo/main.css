@@ -1,6 +1,13 @@
+html {
+  font-family: 'Varela Round', sans-serif;
+  background-color: #515151;
+}
+
 h1 {
   text-align: center;
+  color: azure;
 }
+
 
 .container {
   width: 85%;
@@ -43,13 +50,19 @@ h1 {
   border: solid 1px black;
 }
 
+.count {
+}
+
+.footerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
 .actionBtns {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
   padding: 7px;
-  border: solid 1px black;
 }
 
 .completed {

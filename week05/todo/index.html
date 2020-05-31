@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--These are for fonts and icons-->
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+    
+    rel="stylesheet">
     <link rel="stylesheet" href="main.css">
     <title>What To-Do</title>
 </head>
@@ -18,11 +21,13 @@
                 <button class="end">X</button>
             </div> -->
         </div>
-        <div class="actionBtns">
+        <div class="footerContainer">
             <div class="count"></div>
-            <button onclick="startUp()">All</button>
-            <button onclick="activeTodos()">Active</button>
-            <button onclick="completedTodos()">Completed</button>
+            <div class="actionBtns">
+                <button class="actionButton" onclick="startUp()">All</button>
+                <button class="actionButton" onclick="activeTodos()">Active</button>
+                <button class="actionButton" onclick="completedTodos()">Completed</button>
+            </div>
         </div>
         <div class="entry">
             <input type="text" name="Todo Entry" id="todoEntry" placeholder="Add a Task Here!"><button onclick="addTodo()">+</button>

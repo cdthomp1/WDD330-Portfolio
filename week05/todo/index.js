@@ -18,7 +18,7 @@ function addTodo() {
     document.getElementById("todoEntry").value = '';
 }
 
-function displayEntry(todo, status) {
+function displayEntry(todo) {
 
 
     var todoItemDiv = document.createElement('div');
@@ -110,7 +110,7 @@ async function startUp() {
 
     var todos = await getEntries();
     
-    displayCount(todos.length);
+    displayCount(todos.filter(item => item.completed === false).length);
 
     if (todos !== null) {
         todos.forEach(todo => {
@@ -124,7 +124,15 @@ async function startUp() {
 
 function displayCount(count) {
     // Reset the html to be empty, may not need this
-    document.getElementsByClassName('count')[0].innerHTML = '';
+    var taskCount = document.getElementsByClassName('count')[0];
+    taskCount.innerHTML = '';
+
+    if (count === 1) {
+        taskCount.innerText = count + " Task Left!"
+    } else {
+        taskCount.innerText = count + " Tasks Left"
+
+    }
     
 }
 
@@ -138,6 +146,7 @@ function showError() {
 async function activeTodos() {
     document.getElementsByClassName('todoList')[0].innerHTML = '';
     var todos = await getEntries();
+    displayCount(todos.filter(item => item.completed === false).length);
 
     if (todos !== null) {
         todos.filter(todo => todo.completed === false)
@@ -150,6 +159,8 @@ async function activeTodos() {
 async function completedTodos() {
     document.getElementsByClassName('todoList')[0].innerHTML = '';
     var todos = await getEntries();
+    
+    displayCount(0);
 
     if (todos !== null) {
         todos.filter(todo => todo.completed === true)
