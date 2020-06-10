@@ -70,6 +70,36 @@
             <h4>Callbacks</h4>
             <ul>
                 <li>Since functions are first class objects. This allows us to treat them like any other object and pass them into other functions. This is commanly reffered to a callback. example from book: </li>
+                <div class="code-snipet">
+                    <pre><code class="language-javascript">function sing(song) {
+    console.log(`I'm singing along to ${song}`);
+}
+sing('Let It Go')
+<< 'I'm singing along to Let It Go'</code></pre>
+                </div>
+                <div class="code-snipet">
+                    <pre><code class="language-javascript"></code></pre>
+                </div>
+                <li>Adding the callback parameter</li>
+                <div class="code-snipet">
+                    <pre><code class="language-javascript">function sing(song,callback) {
+    console.log(`I'm singing along to ${song}.`);
+    callback();
+}</code></pre>
+                </div>
+                <li>Creating the callback function</li>
+                <div class="code-snipet">
+                    <pre><code class="language-javascript">function dance() {
+    console.log("I'm moving my body to the groove."); ( We’re just logging a simple message to the console in these examples, but these functions could be used to do anything in a practical sense.)
+}</code></pre>
+                </div>
+                <li>Invoking our function with the new callback</li>
+                <div class="code-snipet">
+                    <pre><code class="language-javascript">sing('Let It Go',dance);
+<< 'I'm singing along to Let It Go.'
+'I'm moving my body to the groove.'</code></pre>
+                </div>
+                <li>Callbacks are passed into the function as a paramenter without the parentheses. The callback will be executed in the function with the parentheses, generally when some task has been executed.</li>
             </ul>
             <h4>Closures</h4>
             <ul>
