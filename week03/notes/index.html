@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 02: Notes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Spartan&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <a href="../index.html">< Back</a>
+    <h1>Week 03</h1>
+    <div class="notes">
+        <h2>Here is a live example of manipulating the dom</h2>
+        <div id="test">
+            <label for="input">List Item</label><input type="text" id="input" placeholder="Enter Text Here!"><button onclick="addListItem()">Add To List!</button><br />
+            <label for="colorChange">Change the background color or the list!</label><input type="color" name="bgColor" id="bgColor" onchange="changeColor()">
+        </div>
+
+
+        </div> 
+        <script>
+            function addListItem() {
+                var mainDiv = document.getElementById('test');
+                var listDiv;
+                var list;
+                if (document.getElementById('listDiv') === null) {
+                    listDiv = document.createElement('div');
+                    listDiv.setAttribute('id', 'listDiv');
+                    list = document.createElement('ul');
+                    list.setAttribute('id', 'theList')
+                } else {
+                    listDiv = document.getElementById('listDiv');
+                    list = document.getElementById('theList');
+                }
+
+                var input = document.getElementById('input').value;
+
+                var listItem = document.createElement('li');
+
+                listItem.innerText = input;
+
+                list.appendChild(listItem);
+
+                listDiv.appendChild(list)
+
+                mainDiv.appendChild(listDiv);
+            }
+
+            function changeColor() {
+                var listDiv = document.getElementById('listDiv'); 
+                var newColor = document.getElementById('bgColor').value;
+                if (listDiv !== null) {
+                    console.log(newColor)
+                    listDiv.style.backgroundColor = newColor;
+                }
+            }
+        </script>
+
+</body>
+
+</html>
