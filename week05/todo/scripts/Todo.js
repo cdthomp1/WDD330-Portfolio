@@ -4,6 +4,26 @@ class TodoItem {
         this.content = task;
         this.completed = false;
     }
+    
+    addTodo() {
+        
+    }
+
+    saveTodo() {
+
+    }
+
+    completeTodo() {
+
+    }
+
+    removeTodo() {
+
+    }
+
+    filterTodo() {
+        
+    }
 }
 
 

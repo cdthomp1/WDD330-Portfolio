@@ -33,6 +33,12 @@ html {
     padding: 2px;
 }
 
+.notice {
+    background-color: rgb(137, 240, 128);
+    font-style: italic;
+    padding: 2px;
+}
+
 /* PrismJS 1.20.0
 https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript */
 /**

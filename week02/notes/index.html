@@ -10,20 +10,101 @@
 </head>
 
 <body>
+    <a href="../index.html">< Back</a>
     <h1>Week 02</h1>
     <div class="notes">
         <h2 id="noteHeader">Notes</h2>
-        <small>I did not take nots on chapters 2 and 3 as it was review.</small>
+        <small>I did not take notes on chapters 2 and 3 as it was review.</small>
         <h3>Chapter 04: Functions</h3>
         <div>
             <h4>Defining a Function</h4>
             <ul>
-                <li></li>
+                <li>Defining a function literal using a function declaration:</li>
+                <div class="code-snipet">
+                    <pre><code class="language-javascript">function hello() {
+    console.log('Hello World!');
+}</code></pre>
+                </div>
+                <li>Defing a function literal using a function expression (This assigns ananonymous <em>function</em> to a variable):</li>
+                <div class="code-snipet">
+                    <pre><code class="language-javascript">const goodbye = function(){
+    console.log('Goodbye World!');
+};</code></pre>
+                </div>
+                <li>Defing a function literal using a named function expression</li>
+                <div class="code-snipet">
+                    <pre><code class="language-javascript">const goodbye = function bye(){
+    console.log('Goodbye World!');
+};</code></pre>
+</div>
+<li class="notice">REMEMBER! Every function has a name!</li>
+            </ul>
+            <h4>Function Constructors</h4>
+            <ul>
+                <li>A function can also be declared using the constructor <code class="language-javascript">Function()</code> . The body of the function is entered as a string, as shown in this example:</li>
+                <div class="code-snipet">
+                    <pre><code class="language-javascript">const hi = new Function('console.log("Hi World!");');</code></pre>
+                </div>
+                <li>It is not recomended to declare functions with the function constructor, there are too many issues when a function is put into a string. Functions created this way are also created in the global scope, regardless of where they are actually declared. This can lead to some strange and unexpected behavior.</li>
             </ul>
             <h4>Invoking a Function</h4>
+            <ul>
+                <li>Invoking a function tells the computer to run the code inside the functions body. It is easy to invoke a function, type its name folled by parentheses.</li>
+                <div class="code-snipet">
+                    <pre><code class="language-javascript">hello();</code></pre>
+                </div>
+                <li>If we used a function expression, we can invoke that function by putting parenthese safter the name of the variable</li>
+                <div class="code-snipet">
+                    <pre><code class="language-javascript">goodbye();</code></pre>
+                </div>
+                <li class="notice">Not including the parentheses after the name of the function/variable, will just be a reference to the function/variable, not allowing it to be invoked/executed. </li>
+            </ul>
             <h4>Return Values</h4>
+            <ul>
+                <li>All functions will return something. If the return statement is omitted, then the function returns <code class="language-javascript">undefined</code>. All other return statements will return the value specified.</li>
+            </ul>
             <h4>Parameters and Arguments</h4>
+            <ul>
+                <li>Parametersandargumentsare terms that are often used interchangeably to represent values provided for the function as an input. There is a subtle difference though: any parameters a function needs are set when the function is <em>defined</em>. When a function is <em>invoked</em>, it is provided with arguments.</li>
+            </ul>
             <h4>Callbacks</h4>
+            <ul>
+                <li>Since functions are first class objects. This allows us to treat them like any other object and pass them into other functions. This is commanly reffered to a callback. example from book: </li>
+            </ul>
+            <h4>Closures</h4>
+            <ul>
+                <li>Closures are great when you need to provide parameties to function, before the function is executed. For example, looping through a <code class="language-javascript">NodeList</code> you may need to keep track of the index. Using a closure is important because it allows you to retain information that will no longer be available when the function is executed.</li>
+                <li>Good example of a closure:</li>
+                <div class="code-snipet">
+                    <pre><code class="language-javascript">function tabsHandler(index) {
+    return function tabClickEvent(evt) {
+        // Do stuff with tab.
+        // The index variable can be accessed from within here.
+    };
+}
+
+var tabs = document.querySelectorAll('.tab'),
+    i;
+
+for (i = 0; i < tabs.length; i += 1) {
+    tabs[i].onclick = tabsHandler(i);
+}
+                    </code></pre>
+                </div>
+                <li>Bad example (Why we need a closure)</li>
+                <div class="code-snipet">
+                    <pre><code class="language-javascript">var i;
+
+for (i = 0; i < list.length; i += 1) {
+    document.querySelector('#item' + i).onclick = function doSomething(evt) {
+        // Do something with item i
+        // But, by the time this function executes, the value of i is always list.length
+    }
+}
+                    </code></pre>
+                </div>
+                <li>For further information, see <a href="http://jibbering.com/faq/faq_notes/closures.html#clClDo">closure examples and FAQ</a>.</li>
+            </ul>
         </div>
         <div class="code-snipet">
             <pre><code class="language-javascript"></code></pre>
