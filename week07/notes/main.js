@@ -19,7 +19,7 @@ async function getNews() {
   }
   
   function makeNewsListins(listings) {
-    listings.forEach(listing => {
+    listings.map(listing => {
       createListItem(listing)
     });
   }

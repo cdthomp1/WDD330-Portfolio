@@ -1,0 +1,55 @@
+html {
+    background-color: rgb(138, 136, 136);
+    font-family: 'Courier Prime', monospace;
+}
+
+.timingBox {
+    width: 100px;
+    height: 100px;
+    background: rgb(10, 85, 125);
+    transition: width 2s;
+    color: white;
+  }
+  
+  #box1 {transition-timing-function: linear;}
+  #box2 {transition-timing-function: ease;}
+  #box3 {transition-timing-function: ease-in;}
+  #box4 {transition-timing-function: ease-out;}
+  #box5 {transition-timing-function: ease-in-out;}
+  
+  .timingBox:hover {
+    width: 300px;
+  }
+
+  .grow {
+    width: 100px;
+    height: 100px;
+    background: rgb(136, 10, 101);
+    transition: width 2s, height 1s;
+  }
+  
+  .grow:hover {
+    width: 300px;
+    height: 300px;
+  }
+
+  .spin {
+    width: 100px;
+    height: 100px;
+    background: red;
+    transition: width 2s, height 2s, transform 2s;
+  }
+  
+  .spin:hover {
+    width: 300px;
+    height: 300px;
+    transform: rotate(180deg);
+    background: blue;
+  }
+
+  .image {
+      background-image: url('https://cameronthompson.io/images/Dev.png');
+      background-repeat: no-repeat;
+      width: 500px;
+      height: 350px;
+  }
