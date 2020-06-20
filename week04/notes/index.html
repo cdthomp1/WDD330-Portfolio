@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Notes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    This is a form that changes depending on what you enter. A dynamic form if you will.
+
+    <form id="dynamic">
+        <div id="nameInput">
+            <label for="name">Enter your name</label><input id="name" type="text" onchange="watchName()">
+        </div>
+        <p class="hidden" id="userName"></p>
+        <div id="radioGroupBtns" class="hidden">
+            <input type="radio" name="rad" value="1" onchange="watchRadio()">Ask Another Question</input>
+            <input type="radio" name="rad" value="0" onchange="watchRadio()">Nothing</input>
+        </div>
+        <div id="finalQ" class="hidden">
+            <label for="status">How are you today?</label><input type="text" name="status" id="status" onchange="statusUpdate()">
+        </div>
+        <div id="userStatus" class="hidden">
+
+        </div>
+        <div id='goodBye' class="hidden">
+            <p id="goodbyeName"></p>
+        </div>
+
+    </form>
+
+    <script src="./main.js"></script>
+</body>
+
+</html>
