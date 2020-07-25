@@ -1,7 +1,11 @@
 async function getNews() {
+  const today = new Date(Date.now())
+  const year = today.getFullYear();
+  const month = today.getMonth() + 1;
+  const day = today.getUTCDate();
     var url = 'https://newsapi.org/v2/everything?' +
       'q=Apple&' +
-      'from=2020-06-01&' +
+      `from=${year}-${month}-${day}&` +
       'sortBy=popularity&' +
       'apiKey=7a7d259cb0f845db93e567bf7411d507';
     var news;

@@ -7,7 +7,7 @@
         <meta name="description" content="Tic-Tac-Toe game">
         <style>
             .board {
-                width: 50%;
+                width: 40%;
                 margin: auto;
             }
             .row {
@@ -15,58 +15,60 @@
                 flex-direction: row;
             }
             .cell {
-                border: 1px solid black;
+               /*  border: 1px solid black; */
                 width: 50px;
                 height: 50px;
+            }
+             .cell:nth-child(1) {
+                border-right: 1px solid black;
+            } 
+            .cell:nth-child(2) {
+                border-right: 1px solid black;
+            } 
+            .one, .two {
+                border-bottom: 1px solid black;
             }
         </style>
     </head>
     <body>
         <div class="board">
-            <div class="row">
-                <div class="cell" id="0"></div>
-                <div class="cell" id="1"></div>
-                <div class="cell" id="2"></div>
+            <div class="row one">
+                <div class="cell" id="0" ontouchend="markCell(this.id)"></div>
+                <div class="cell" id="1" ontouchend="markCell(this.id)"></div>
+                <div class="cell" id="2" ontouchend="markCell(this.id)"></div>
+            </div>
+            <div class="row two">
+                <div class="cell" id="3" ontouchend="markCell(this.id)"></div>
+                <div class="cell" id="4" ontouchend="markCell(this.id)"></div>
+                <div class="cell" id="5" ontouchend="markCell(this.id)"></div>
             </div>
             <div class="row">
-                <div class="cell" id="3"></div>
-                <div class="cell" id="4"></div>
-                <div class="cell" id="5"></div>
-            </div>
-            <div class="row">
-                <div class="cell" id="6"></div>
-                <div class="cell" id="7"></div>
-                <div class="cell" id="8"></div>
+                <div class="cell" id="6" ontouchend="markCell(this.id)"></div>
+                <div class="cell" id="7" ontouchend="markCell(this.id)"></div>
+                <div class="cell" id="8" ontouchend="markCell(this.id)"></div>
             </div>
         </div>
-        
-        <button id="reset"> Reset </button>
-
-   
+        <button id="reset" onclick="clearBoard()"> Reset </button>
         <script>
             var currentPlayer = 1;
-            let cells = document.getElementsByClassName('cell');
-            //console.log(cells.length);
-            for (var i = 0; i < cells.length; i++) {
-                // console.log("Touch!");
-                cells[i].addEventListener('touchend', markCell(cells[i].id));
+            function clearBoard() {
+                let cells = document.getElementsByClassName('cell');
+                console.log(cells.length);
+                    for (var i = 0; i < cells.length; i++) {
+                        // console.log("Touch!");
+                        cells[i].innerText = "";
+                    } 
             }
-            
-            function markCell(player, id) {
+            function markCell(id) {
                 console.log(id)
-
-                if(player === 1) {
+                if(currentPlayer === 1) {
                     document.getElementById(id).innerText = "X";
                     currentPlayer = 2;
-                } else if (player === 2) {
+                } else if (currentPlayer === 2) {
                     document.getElementById(id).innerText = "O";
                     currentPlayer = 1;
                 }
             }
-
-        
-
-
         </script> 
     </body>
 </html>
